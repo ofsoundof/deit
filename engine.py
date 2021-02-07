@@ -14,7 +14,7 @@ from timm.utils import accuracy, ModelEma
 
 from losses import DistillationLoss
 import utils
-
+from IPython import embed
 
 def train_one_epoch(model: torch.nn.Module, criterion: DistillationLoss,
                     data_loader: Iterable, optimizer: torch.optim.Optimizer,
@@ -74,6 +74,7 @@ def evaluate(data_loader, model, device):
     model.eval()
 
     for images, target in metric_logger.log_every(data_loader, 10, header):
+        embed(); exit()
         images = images.to(device, non_blocking=True)
         target = target.to(device, non_blocking=True)
 
